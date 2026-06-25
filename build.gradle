@@ -42,7 +42,7 @@ test {
             "json:build/reports/cucumber/report.json"
 }
 
-tasks.register("runWeb", JavaExec) {
+tasks.register("webTest", JavaExec) {
     group = "verification"
     description = "Run Web Cucumber Tests"
 
@@ -59,7 +59,7 @@ tasks.register("runWeb", JavaExec) {
     ]
 }
 
-tasks.register("runApi", JavaExec) {
+tasks.register("apiTest", JavaExec) {
     group = "verification"
     description = "Run API Cucumber Tests"
 
