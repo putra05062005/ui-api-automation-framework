@@ -1,181 +1,184 @@
-# UI & API Automation Testing Framework
+# UI & API Automation Framework
 
-Automation Testing Framework built using **Java**, **Gradle**, **Selenium WebDriver**, **Rest Assured**, and **Cucumber (BDD)**. This project demonstrates how to combine **Web UI Testing** and **API Testing** in a single repository while following clean project architecture and Page Object Model (POM).
+![Java](https://img.shields.io/badge/Java-17-blue)
+![Gradle](https://img.shields.io/badge/Gradle-Build-green)
+![Selenium](https://img.shields.io/badge/Selenium-WebDriver-brightgreen)
+![RestAssured](https://img.shields.io/badge/RestAssured-API-orange)
+![Cucumber](https://img.shields.io/badge/Cucumber-BDD-green)
+![GitHub Actions](https://img.shields.io/badge/GitHub-Actions-blue)
+
+Automation Testing Framework menggunakan **Java**, **Selenium WebDriver**, **Rest Assured**, **Cucumber**, dan **Gradle** untuk melakukan pengujian **Web UI** dan **REST API** dalam satu project.
 
 ---
 
-## 🚀 Tech Stack
+## 🚀 Technologies & Tools
 
-* Java 17
-* Gradle
-* Selenium WebDriver
-* Rest Assured
-* Cucumber (BDD)
-* JUnit Platform
-* GitHub Actions
-* ChromeDriver
+- Java 17
+- Gradle
+- Selenium WebDriver
+- Rest Assured
+- Cucumber (Gherkin)
+- JUnit
+- GitHub Actions
+- ChromeDriver
 
 ---
 
 ## 📂 Project Structure
 
 ```
-src
-├── test
-│   ├── java
-│   │   ├── api
-│   │   │   ├── runners
-│   │   │   ├── stepdefinitions
-│   │   │   └── utils
-│   │   │
-│   │   ├── web
-│   │   │   ├── pages
-│   │   │   ├── runners
-│   │   │   ├── stepdefinitions
-│   │   │   └── utils
-│   │   │
-│   │   └── common
-│   │
-│   └── resources
-│       └── features
-│           ├── api
-│           └── web
+automation-framework
+│
+├── .github
+│   └── workflows
+│       └── test.yml
+│
+├── src
+│   └── test
+│       ├── java
+│       │
+│       ├── api
+│       │   ├── runners
+│       │   ├── steps
+│       │   └── utils
+│       │
+│       ├── web
+│       │   ├── pages
+│       │   ├── runners
+│       │   └── steps
+│       │
+│       ├── common
+│       │
+│       └── hooks
+│
+│
+│       └── resources
+│           └── features
+│               ├── api
+│               └── web
+│
+├── build.gradle
+└── README.md
 ```
 
 ---
 
-## 🌐 Test Target
+## 🧪 Test Coverage
 
-### Web UI
+### Web UI Automation
 
 Website:
 https://www.saucedemo.com/
 
 Scenario:
 
-* Login
-* Checkout Product
+- Login
+- Add Product
+- Checkout Product
+- Verify Checkout Success
 
 ---
 
-### API
+### API Automation
 
 Public API:
-
 https://dummyapi.io/
 
 Scenario:
 
-* Get List Users
-
-Authentication uses:
-
-```
-app-id
-```
-
-inside request header.
+- Get List Users
+- Validate Status Code
+- Validate Response Body
 
 ---
 
-## 🧪 Features
+## ▶ Running Test
 
-### Web Automation
-
-* Login
-* Product Checkout
-* Page Object Model implementation
-* Explicit Wait
-* Selenium WebDriver
-
-### API Automation
-
-* GET User List
-* Response Validation
-* Status Code Validation
-* JSON Response Validation
-
----
-
-## ▶ Running Tests
-
-### Run all Web Tests
+Run Web Test
 
 ```bash
 ./gradlew webTest
 ```
 
----
-
-### Run all API Tests
+Run API Test
 
 ```bash
 ./gradlew apiTest
 ```
 
+Run All Tests
+
+```bash
+./gradlew clean build
+```
+
 ---
 
-## 📊 Reports
+## 📊 Test Report
 
-After execution, reports are generated automatically.
+After execution, Cucumber reports will be generated automatically.
 
 HTML Report
 
 ```
-build/reports/cucumber/web-report.html
-```
-
-```
-build/reports/cucumber/api-report.html
+build/reports/cucumber.html
 ```
 
 JSON Report
 
 ```
-build/reports/cucumber/web-report.json
-```
-
-```
-build/reports/cucumber/api-report.json
+build/reports/cucumber.json
 ```
 
 ---
 
 ## ⚙ GitHub Actions
 
-This project supports CI/CD using GitHub Actions.
+This project includes GitHub Actions for Continuous Integration.
 
-Workflow triggers:
+Workflow will run:
 
-* Push
-* Pull Request
-* Manual Trigger (workflow_dispatch)
+- On Pull Request
+- Manual Trigger (workflow_dispatch)
 
-GitHub Actions automatically executes:
+Pipeline:
 
-* Web UI Test
-* API Test
+```
+Build Project
+      ↓
+Run Web Test
+      ↓
+Run API Test
+```
 
 ---
 
-## 📖 Design Pattern
+## 📚 Design Pattern
 
-This project applies:
+This project implements:
 
-* Page Object Model (POM)
-* Behavior Driven Development (BDD)
-* Cucumber Gherkin
-* Modular Test Architecture
+- Page Object Model (POM)
+- Gherkin Feature Files
+- Cucumber Step Definitions
+- Explicit Wait
+- Reusable Driver Manager
+
+---
+
+## 📦 Dependencies
+
+- Selenium
+- Rest Assured
+- Cucumber Java
+- Cucumber JUnit
+- JUnit
+- WebDriverManager
 
 ---
 
 ## 👨‍💻 Author
 
 **Pahala Putra Tambunan**
-
-Computer Technology Student
-
-Institut Teknologi Del
 
 LinkedIn:
 https://www.linkedin.com/in/pahala-putra-t-403915335/

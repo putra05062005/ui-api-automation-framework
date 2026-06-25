@@ -31,15 +31,15 @@ public class ProductPage {
     public void goToCart() {
 
     WebElement cart = wait.until(
-        ExpectedConditions.elementToBeClickable(cartIcon));
+            ExpectedConditions.elementToBeClickable(cartIcon));
 
-try {
-    cart.click();
-} catch (Exception e) {
-    ((JavascriptExecutor) driver)
-            .executeScript("arguments[0].click();", cart);
-}
+    try {
+        cart.click();
+    } catch (Exception e) {
+        ((JavascriptExecutor) driver)
+                .executeScript("arguments[0].click();", cart);
+    }
 
-wait.until(ExpectedConditions.urlContains("cart"));
+    wait.until(ExpectedConditions.urlContains("cart"));
 }
 }
