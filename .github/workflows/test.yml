@@ -1,0 +1,23 @@
+name: Automation Test CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          java-version: 17
+
+      - name: Run Web Test
+        run: ./gradlew runWeb
+
+      - name: Run API Test
+        run: ./gradlew runApi

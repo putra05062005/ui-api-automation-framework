@@ -1,0 +1,77 @@
+plugins {
+    id 'java'
+}
+
+group = 'org.example'
+version = '1.0.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    // Selenium
+    testImplementation 'org.seleniumhq.selenium:selenium-java:4.22.0'
+
+    // WebDriverManager
+    testImplementation 'io.github.bonigarcia:webdrivermanager:5.9.2'
+
+    // Cucumber
+    testImplementation 'io.cucumber:cucumber-java:7.18.1'
+    testImplementation 'io.cucumber:cucumber-junit-platform-engine:7.18.1'
+
+    // JUnit
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.2'
+    testImplementation 'org.junit.platform:junit-platform-suite:1.10.2'
+
+    // Rest Assured
+    testImplementation 'io.rest-assured:rest-assured:5.5.1'
+    testImplementation 'io.rest-assured:json-path:5.5.1'
+
+    // Assertions
+    testImplementation 'org.assertj:assertj-core:3.26.3'
+}
+
+test {
+    useJUnitPlatform()
+
+    systemProperty "cucumber.plugin",
+            "pretty," +
+            "html:build/reports/cucumber/report.html," +
+            "json:build/reports/cucumber/report.json"
+}
+
+tasks.register("runWeb", JavaExec) {
+    group = "verification"
+    description = "Run Web Cucumber Tests"
+
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = "io.cucumber.core.cli.Main"
+
+    args = [
+        "--glue", "web.steps",
+        "--plugin", "pretty",
+        "--plugin", "html:build/reports/cucumber/web-report.html",
+        "--plugin", "json:build/reports/cucumber/web-report.json",
+        "--tags", "@web",
+        "src/test/resources/features/web"
+    ]
+}
+
+tasks.register("runApi", JavaExec) {
+    group = "verification"
+    description = "Run API Cucumber Tests"
+
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = "io.cucumber.core.cli.Main"
+
+    args = [
+        "--glue", "api",
+        "--plugin", "pretty",
+        "--plugin", "html:build/reports/cucumber/api-report.html",
+        "--plugin", "json:build/reports/cucumber/api-report.json",
+        "--tags", "@api",
+        "src/test/resources/features/api"
+    ]
+}
