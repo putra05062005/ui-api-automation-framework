@@ -42,36 +42,36 @@ test {
             "json:build/reports/cucumber/report.json"
 }
 
-tasks.register("webTest", JavaExec) {
+tasks.register("runWeb", JavaExec) {
     group = "verification"
-    description = "Run Web Cucumber Tests"
+    description = "Run Web Tests"
 
     classpath = sourceSets.test.runtimeClasspath
     mainClass = "io.cucumber.core.cli.Main"
 
     args = [
-        "--glue", "web.steps",
-        "--plugin", "pretty",
-        "--plugin", "html:build/reports/cucumber/web-report.html",
-        "--plugin", "json:build/reports/cucumber/web-report.json",
-        "--tags", "@web",
-        "src/test/resources/features/web"
+            "--plugin", "pretty",
+            "--plugin", "html:build/reports/cucumber/web-report.html",
+            "--plugin", "json:build/reports/cucumber/web-report.json",
+            "--glue", "web.steps",
+            "--tags", "@web",
+            "src/test/resources/features/web"
     ]
 }
 
-tasks.register("apiTest", JavaExec) {
+tasks.register("runApi", JavaExec) {
     group = "verification"
-    description = "Run API Cucumber Tests"
+    description = "Run API Tests"
 
     classpath = sourceSets.test.runtimeClasspath
     mainClass = "io.cucumber.core.cli.Main"
 
     args = [
-        "--glue", "api",
-        "--plugin", "pretty",
-        "--plugin", "html:build/reports/cucumber/api-report.html",
-        "--plugin", "json:build/reports/cucumber/api-report.json",
-        "--tags", "@api",
-        "src/test/resources/features/api"
+            "--plugin", "pretty",
+            "--plugin", "html:build/reports/cucumber/api-report.html",
+            "--plugin", "json:build/reports/cucumber/api-report.json",
+            "--glue", "api",
+            "--tags", "@api",
+            "src/test/resources/features/api"
     ]
 }

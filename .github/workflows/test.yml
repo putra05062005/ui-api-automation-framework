@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
       - name: Checkout Repository
         uses: actions/checkout@v4
 
@@ -24,10 +25,16 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build Project
-        run: ./gradlew clean build -x test
+        run: ./gradlew clean build
 
       - name: Run Web Test
-        run: ./gradlew webTest
+        run: ./gradlew runWeb
 
       - name: Run API Test
-        run: ./gradlew apiTest
+        run: ./gradlew runApi
+
+      - name: Upload Cucumber Reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: cucumber-reports
+          path: build/reports/cucumber/

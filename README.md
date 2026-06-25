@@ -1,32 +1,65 @@
-# UI & API Automation Framework
+<div align="center">
 
-![Java](https://img.shields.io/badge/Java-17-blue)
-![Gradle](https://img.shields.io/badge/Gradle-Build-green)
-![Selenium](https://img.shields.io/badge/Selenium-WebDriver-brightgreen)
-![RestAssured](https://img.shields.io/badge/RestAssured-API-orange)
-![Cucumber](https://img.shields.io/badge/Cucumber-BDD-green)
-![GitHub Actions](https://img.shields.io/badge/GitHub-Actions-blue)
+# 🚀 UI & API Automation Framework
 
-Automation Testing Framework menggunakan **Java**, **Selenium WebDriver**, **Rest Assured**, **Cucumber**, dan **Gradle** untuk melakukan pengujian **Web UI** dan **REST API** dalam satu project.
+### Selenium • Rest Assured • Cucumber • Java • GitHub Actions
+
+<p align="center">
+
+![Java](https://img.shields.io/badge/Java-17-red?style=for-the-badge&logo=openjdk)
+![Selenium](https://img.shields.io/badge/Selenium-4-green?style=for-the-badge&logo=selenium)
+![RestAssured](https://img.shields.io/badge/RestAssured-API-blue?style=for-the-badge)
+![Cucumber](https://img.shields.io/badge/Cucumber-BDD-brightgreen?style=for-the-badge&logo=cucumber)
+![Gradle](https://img.shields.io/badge/Gradle-Build-blue?style=for-the-badge&logo=gradle)
+![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-CI-success?style=for-the-badge&logo=githubactions)
+
+</p>
+
+Automation Testing Framework that combines **Web UI Testing** and **API Testing**
+using **Selenium**, **Rest Assured**, **Cucumber**, **Gradle**, and **GitHub Actions**
+inside one repository.
+
+</div>
 
 ---
 
-## 🚀 Technologies & Tools
+# 📖 Overview
 
-- Java 17
-- Gradle
-- Selenium WebDriver
-- Rest Assured
-- Cucumber (Gherkin)
-- JUnit
-- GitHub Actions
-- ChromeDriver
+This project was built as a Final Automation Testing Project.
+
+The framework combines **UI Automation** and **API Automation** in one repository while following software testing best practices.
+
+The project implements:
+
+- ✅ Page Object Model (POM)
+- ✅ Behavior Driven Development (BDD)
+- ✅ Selenium WebDriver
+- ✅ Rest Assured
+- ✅ Cucumber
+- ✅ Gradle
+- ✅ GitHub Actions
+- ✅ HTML Report
+- ✅ JSON Report
 
 ---
 
-## 📂 Project Structure
+# 🛠 Tech Stack
 
-```
+| Technology | Description |
+|------------|-------------|
+| Java 17 | Programming Language |
+| Selenium WebDriver | UI Automation |
+| Rest Assured | API Automation |
+| Cucumber | BDD Testing |
+| JUnit 5 | Assertions |
+| Gradle | Build Tool |
+| GitHub Actions | Continuous Integration |
+
+---
+
+# 📂 Project Structure
+
+```text
 automation-framework
 │
 ├── .github
@@ -38,75 +71,113 @@ automation-framework
 │       ├── java
 │       │
 │       ├── api
-│       │   ├── runners
-│       │   ├── steps
-│       │   └── utils
-│       │
-│       ├── web
-│       │   ├── pages
-│       │   ├── runners
-│       │   └── steps
+│       │   ├── ApiSteps.java
+│       │   └── runners
+│       │       └── ApiRunner.java
 │       │
 │       ├── common
+│       │   └── DriverManager.java
 │       │
-│       └── hooks
+│       └── web
+│           ├── pages
+│           ├── runners
+│           └── steps
 │
 │
-│       └── resources
-│           └── features
-│               ├── api
-│               └── web
-│
-├── build.gradle
-└── README.md
+└── resources
+    └── features
+        ├── api
+        └── web
 ```
 
 ---
 
-## 🧪 Test Coverage
+# 🌐 Web Automation
 
-### Web UI Automation
+Target Website
 
-Website:
 https://www.saucedemo.com/
 
-Scenario:
+---
 
-- Login
-- Add Product
-- Checkout Product
-- Verify Checkout Success
+## Automated Scenario
+
+✅ Login
+
+✅ Add Product to Cart
+
+✅ Checkout Product
+
+✅ Verify Checkout Success
 
 ---
 
-### API Automation
+## Design Pattern
 
-Public API:
-https://dummyapi.io/
+This project follows the **Page Object Model (POM)**.
 
-Scenario:
+Pages
 
-- Get List Users
-- Validate Status Code
-- Validate Response Body
+- LoginPage
+- ProductPage
+- CartPage
+- CheckoutPage
 
 ---
 
-## ▶ Running Test
+# 🔗 API Automation
 
-Run Web Test
+Target API
+
+https://jsonplaceholder.typicode.com
+
+---
+
+## Automated Scenario
+
+| API | Status |
+|------|--------|
+| GET List Users | ✅ |
+| GET User by ID | ✅ |
+| POST Create User | ✅ |
+| PUT Update User | ✅ |
+| DELETE User | ✅ |
+
+---
+
+## API Validation
+
+This framework validates
+
+- HTTP Status Code
+- Response Body
+- User ID
+- User Name
+- User Email
+- Created User
+- Updated User
+
+---
+
+# ▶️ Running Test
+
+## Run Web Automation
 
 ```bash
-./gradlew webTest
+./gradlew runWeb
 ```
 
-Run API Test
+---
+
+## Run API Automation
 
 ```bash
-./gradlew apiTest
+./gradlew runApi
 ```
 
-Run All Tests
+---
+
+## Build Project
 
 ```bash
 ./gradlew clean build
@@ -114,74 +185,135 @@ Run All Tests
 
 ---
 
-## 📊 Test Report
+# 📊 Test Reports
 
-After execution, Cucumber reports will be generated automatically.
-
-HTML Report
+Cucumber automatically generates reports after execution.
 
 ```
-build/reports/cucumber.html
-```
-
-JSON Report
-
-```
-build/reports/cucumber.json
+build/
+└── reports/
+    └── cucumber/
+        ├── api-report.html
+        ├── api-report.json
+        ├── web-report.html
+        └── web-report.json
 ```
 
 ---
 
-## ⚙ GitHub Actions
+# ⚙ GitHub Actions
 
-This project includes GitHub Actions for Continuous Integration.
+The project uses GitHub Actions for Continuous Integration.
 
-Workflow will run:
+Workflow is executed on:
 
-- On Pull Request
-- Manual Trigger (workflow_dispatch)
+- ✅ Push
+- ✅ Pull Request
+- ✅ Manual Trigger
 
-Pipeline:
+Workflow automatically performs:
+
+- Checkout Repository
+- Setup Java
+- Build Project
+- Execute Web Test
+- Execute API Test
+- Generate Reports
+- Upload Reports
+
+---
+
+# 📸 Screenshots
+
+## GitHub Actions
+
+> Replace with your screenshot
 
 ```
-Build Project
-      ↓
-Run Web Test
-      ↓
-Run API Test
+images/github-actions.png
 ```
 
 ---
 
-## 📚 Design Pattern
+## Web Automation
 
-This project implements:
 
-- Page Object Model (POM)
-- Gherkin Feature Files
-- Cucumber Step Definitions
-- Explicit Wait
-- Reusable Driver Manager
+
+```
+images/web-report.png
+```
 
 ---
 
-## 📦 Dependencies
+## API Automation
 
-- Selenium
+```
+images/api-report.png
+```
+
+---
+
+# 🚀 Framework Features
+
+- Selenium WebDriver
 - Rest Assured
-- Cucumber Java
-- Cucumber JUnit
-- JUnit
-- WebDriverManager
+- Cucumber
+- Gradle
+- GitHub Actions
+- HTML Report
+- JSON Report
+- Page Object Model
+- API Validation
+- Web Automation
+- API Automation
 
 ---
 
-## 👨‍💻 Author
+# 📌 Future Improvements
 
-**Pahala Putra Tambunan**
+- Docker Integration
+- Jenkins Pipeline
+- Allure Report
+- Parallel Testing
+- Cross Browser Testing
+- Data Driven Testing
 
-LinkedIn:
+---
+
+# 👨‍💻 Author
+
+## Pahala Putra Tambunan
+
+**Diploma in Computer Technology**
+
+Institut Teknologi Del
+
+---
+
+### 🌐 Connect with Me
+
+**GitHub**
+
+https://github.com/putra05062005
+
+**LinkedIn**
+
 https://www.linkedin.com/in/pahala-putra-t-403915335/
 
-Portfolio:
+**Portfolio**
+
 https://flyingbird05062005.wixsite.com/myportofolio
+
+**Email**
+
+rftkohin@gmail.com
+
+---
+
+<div align="center">
+
+## ⭐ Star this repository if you found it useful!
+
+Made with ❤️ using Java, Selenium, Rest Assured, Cucumber and GitHub Actions.
+
+</div>
