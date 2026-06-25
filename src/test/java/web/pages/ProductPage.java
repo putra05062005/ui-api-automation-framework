@@ -29,9 +29,17 @@ public class ProductPage {
     }
 
     public void goToCart() {
-    wait.until(ExpectedConditions.elementToBeClickable(cartIcon)).click();
 
-    // tunggu masuk cart
+    WebElement cart = wait.until(
+            ExpectedConditions.elementToBeClickable(cartIcon));
+
+    try {
+        cart.click();
+    } catch (Exception e) {
+        ((JavascriptExecutor) driver)
+                .executeScript("arguments[0].click();", cart);
+    }
+
     wait.until(ExpectedConditions.urlContains("cart"));
 }
 }
